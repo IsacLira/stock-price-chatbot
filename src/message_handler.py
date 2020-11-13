@@ -22,11 +22,8 @@ class MessageHandler:
     def build_messages(self):
         html_content = ''
         messages = db.lrange('chat', -self.max_msg, -1)
-        print('MESSAGES FROM BD', len(messages))
         all_messages = messages + self.stock_commands
-        print('MESSAGES FROM', all_messages)
         sorted_messages = self.sort_messages(all_messages)
-        print('ASDD', len(sorted_messages))
         for message in sorted_messages:
             if 'user_name' in message.keys():
                 user, msg = message['user_name'], message['message']
