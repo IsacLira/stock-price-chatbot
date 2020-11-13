@@ -8,7 +8,7 @@ db = RedisDB()
 
 class MessageHandler:
     def __init__(self):
-        self.max_msg = 10
+        self.max_msg = 50
         self.publisher = RabbitMQPublisher()
         self.stock_commands = []
 
@@ -22,14 +22,12 @@ class MessageHandler:
     def build_messages(self):
         html_content = ''
         messages = db.lrange('chat', -self.max_msg, -1)
-        print('MESSAGES FROM BD', len(messages))
         all_messages = messages + self.stock_commands
-        print('MESSAGES FROM', all_messages)
         sorted_messages = self.sort_messages(all_messages)
-        print('ASDD', len(sorted_messages))
         for message in sorted_messages:
             if 'user_name' in message.keys():
-                user, msg = message['user_name'], message['message']
+                user = message['user_name']
+                msg = message['message']
                 time = message['time']
                 html_content += f'<div>{time} - <b style="color: #000"> {user}</b> said: {msg} </div>'
         return {'content': html_content}
@@ -45,5 +43,5 @@ class MessageHandler:
 
                 # The stock commands won't be saved into db
                 self.stock_commands.append(payload)
-            else:
+            elif msg != '':
                 db.rpush('chat', payload)

@@ -38,12 +38,3 @@ class RedisDB:
 
     def hset(self, key, field, value):
         self.conn.hset(key, field, value)
-
-if __name__ == "__main__":
-    import json
-    db = RedisDB()
-
-    key = 'contatos'
-    db.rpush(key, msg)
-    messages = db.lrange(key, 0, -1)
-    print(messages)
