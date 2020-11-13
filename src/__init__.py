@@ -1,7 +1,7 @@
-
+from flask_login import LoginManager, UserMixin
 from flask import Flask, Blueprint
 from flask_socketio import SocketIO
-
+from src.repository.user_repository import UserRepo, User
 
 socketio = SocketIO()
 
@@ -13,6 +13,16 @@ def create_app(debug=False):
 
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
+
+    user_repo = UserRepo()
+
+    login_manager = LoginManager()
+    login_manager.login_view = '/'
+    login_manager.init_app(app)
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User(user_id)#user_repo.get_user(user_id)
 
     socketio.init_app(app)
     return app

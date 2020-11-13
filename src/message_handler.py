@@ -8,7 +8,7 @@ db = RedisDB()
 
 class MessageHandler:
     def __init__(self):
-        self.max_msg = 10
+        self.max_msg = 50
         self.publisher = RabbitMQPublisher()
         self.stock_commands = []
 
