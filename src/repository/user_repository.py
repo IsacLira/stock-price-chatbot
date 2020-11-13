@@ -28,9 +28,9 @@ class UserRepo(RedisDB):
         if len(user_info) == 0:
             print('user not found')
             return False
-        condition = (user_info[0]['user_name'] == user) & \
+        status = (user_info[0]['user_name'] == user) & \
             check_password_hash(user_info[0]['password'], password)
-        return condition
+        return status
 
 
 class User(UserMixin):

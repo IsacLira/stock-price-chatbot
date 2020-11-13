@@ -26,7 +26,8 @@ class MessageHandler:
         sorted_messages = self.sort_messages(all_messages)
         for message in sorted_messages:
             if 'user_name' in message.keys():
-                user, msg = message['user_name'], message['message']
+                user = message['user_name']
+                msg = message['message']
                 time = message['time']
                 html_content += f'<div>{time} - <b style="color: #000"> {user}</b> said: {msg} </div>'
         return {'content': html_content}
@@ -42,5 +43,5 @@ class MessageHandler:
 
                 # The stock commands won't be saved into db
                 self.stock_commands.append(payload)
-            else:
+            elif msg != '':
                 db.rpush('chat', payload)
