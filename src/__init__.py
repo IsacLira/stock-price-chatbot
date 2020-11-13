@@ -22,7 +22,7 @@ def create_app(debug=False):
 
     @login_manager.user_loader
     def load_user(user_id):
-        return User(user_id)#user_repo.get_user(user_id)
+        return User(user_id)
 
     socketio.init_app(app)
     return app
