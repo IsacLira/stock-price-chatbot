@@ -1,11 +1,21 @@
 {% extends "base.html" %}
     {% block content %}
+
+    <h1 class="title">
+    Welcome, {{ name }}.
+    </h1>
+
+    <div>&nbsp</div>
     <div class="box">
     <div class="message_holder"></div>
-    <div class="asdasd">&nbsp</div>
-    <form action="" method="POST">
+    <div>&nbsp</div>
+    <form action="" method="POST" id='form_message'>
       <input type="text" size="56" class="message" placeholder="Type a message"/>
-      <input type="submit"/>
+      <input type="submit" value="Send"/>
+    </form>
+
+    <form action="{{url_for('main.logout')}}" method="POST" >
+      <input class="btn btn-primary" type="submit" value="Exit">
     </form>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -20,30 +30,33 @@
           data: 'User Connected',
         } )
 
-        var form = $( 'form' ).on( 'submit', function( e ) {
+
+        var form = $( '#form_message' ).on( 'submit', function( e ) {
           e.preventDefault()
           let user_input = $( 'input.message' ).val()
           socket.emit( 'message event', {
               user_name : '{{name}}',
-              message : user_input,
+              message : user_input
             }
           )
+
           $('input.message').val( '' ).focus()
+
           }
         )
       })
 
       setInterval(function(){
         socket.emit('read messages')
-        }, 100);
+        }, 200);
 
       socket.on( 'response event', function( msg ) {
         if( typeof msg.content !== 'undefined' ) {
-          // $('#chat').val(msg.content)
           $( 'div.message_holder').css("fontSize", 13);
           $( 'div.message_holder' ).html(msg.content)
+          }
         }
-      })
+      )
 
     </script>
 

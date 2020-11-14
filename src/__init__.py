@@ -24,5 +24,5 @@ def create_app(debug=False):
     def load_user(user_id):
         return User(user_id)
 
-    socketio.init_app(app)
+    socketio.init_app(app,  manage_session=True)
     return app
