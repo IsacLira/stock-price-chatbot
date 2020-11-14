@@ -1,5 +1,6 @@
 import re
 import time
+import json
 from io import BytesIO
 
 import pandas as pd
@@ -38,13 +39,14 @@ class ChatBot:
         return False
 
     def callback(self, ch, method, properties, body):
-        stock_code = body.decode("utf-8")
-        response = self.process_message(stock_code)
-        if response:
+        response = json.loads(body)
+        bot_response = self.process_message(response['message'])
+        if bot_response:
+            response.update(bot_response)
             current_time = time.strftime("%H:%M:%S", time.localtime())
             response.update({
                 'user_name': 'Bot',
-                'time': current_time
+                'time': current_time,
             })
             self.db.rpush('chat', response)
         ch.basic_ack(method.delivery_tag)
