@@ -45,3 +45,9 @@ PYTHONPATH=$PYTHONPATH:$PWD python server.py
 ```python
 PYTHONPATH=$PYTHONPATH:$PWD python bot.py
 ```
+
+* To create users use the command:
+````
+PYTHONPATH=$PYTHONPATH:$PWD python src/repository/user_signup.py --user 'user' --password `password`
+```
+Finally, you can access at the endpoint `127.0.0.1:5000`
