@@ -10,7 +10,13 @@ user_repo = UserRepo()
 @login_required
 def chatrooms():
     return render_template('session.html',
-        name=session['user_name'])
+           name=session['user_name'])
+
+@main.route('/logout', methods=['POST'])
+@login_required
+def logout():
+    logout_user()
+    return redirect('/')
 
 @main.route('/', methods=['POST', 'GET'])
 def index():
