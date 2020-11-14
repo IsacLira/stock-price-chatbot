@@ -1,6 +1,8 @@
 from .. import socketio
 from src.message_handler import MessageHandler
+from flask_socketio import join_room, leave_room
 from flask import session
+
 
 
 message_handler = MessageHandler()
@@ -12,7 +14,15 @@ def read_messages(methods=['GET', 'POST']):
 
 @socketio.on('user connection')
 def user_connected(json, methods=['GET', 'POST']):
-    session[json['id']] = json['user']
+    join_room('chat')
+    try:
+        session[json['id']]
+    except:
+        session[json['id']] = json['user']
+
+@socketio.on('user disconnected')
+def user_disconnected( methods=['GET', 'POST']):
+    leave_room('chat')
 
 @socketio.on('message event')
 def handle_messages(json, methods=['GET', 'POST']):
