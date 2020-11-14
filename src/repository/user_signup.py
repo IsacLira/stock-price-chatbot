@@ -16,7 +16,5 @@ if __name__ == "__main__":
     parser.add_argument('--user', type=str)
     parser.add_argument('--password', type=str)
     params.update(vars(parser.parse_args()))
-
     sgn_.signup(params['user'], params['password'])
 
-    print(sgn_.user_repo.lrange('user', 0, -1))
