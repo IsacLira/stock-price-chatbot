@@ -25,8 +25,17 @@ This is chat application using Flask and SocketIO. The app's features include th
 ```
 pip install -r requirements.txt 
 ```
-* Set the env variables in the `.env` file.
+* Save the default env variables in a `.env` file at the project root.
+```
+RABBIT_MQ_USER='guest'
+RABBIT_MQ_PASSWORD='guest'
+RABBIT_MQ_HOST='localhost'
+RABBIT_MQ_PORT=5672
+RABBITMQ_QUEUE='chat_queue2'
 
+REDIS_HOST='localhost'
+REDIS_PORT=6379
+```
 ## Running the app
 * Start the server by typping at the project root:
 ```python
