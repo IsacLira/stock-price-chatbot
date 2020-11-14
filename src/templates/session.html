@@ -14,7 +14,7 @@
       <input type="submit" value="Send"/>
     </form>
 
-    <form action="{{url_for('main.logout')}}" method="POST" >
+    <form action="{{url_for('main.logout')}}" method="POST" id='logout_form'>
       <input class="btn btn-primary" type="submit" value="Exit">
     </form>
 
@@ -29,12 +29,10 @@
           {'id': socket.id,
            'user': '{{ name }}'})
 
-
         var form = $( '#form_message' ).on( 'submit', function( e ) {
           e.preventDefault()
           let user_input = $( 'input.message' ).val()
           socket.emit( 'message event', {
-              // user_name : '{{name}}',
               message : user_input,
               id: socket.id
             }
@@ -44,7 +42,14 @@
 
           }
         )
-      })
+      });
+
+      var logout = $( '#logout_form' ).on('submit', function(e){
+
+        socket.emit( 'user connection', function (){
+          socket.disconnect()
+        });
+      });
 
       setInterval(function(){
         socket.emit('read messages')
