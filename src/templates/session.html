@@ -46,7 +46,7 @@
 
       var logout = $( '#logout_form' ).on('submit', function(e){
 
-        socket.emit( 'user connection', function (){
+        socket.emit( 'user disconnected', function (){
           socket.disconnect()
         });
       });
