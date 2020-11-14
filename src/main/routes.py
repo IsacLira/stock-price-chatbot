@@ -1,5 +1,5 @@
 from . import main
-from flask_login import login_user, login_required, logout_user
+from flask_login import login_user, login_required, logout_user, current_user
 from flask import session, render_template, request, redirect, url_for
 from src.repository.user_repository import UserRepo, User
 
@@ -24,7 +24,7 @@ def index():
     password = request.form.get('password')
     if user_repo.validate_user(user_name, password):
         session['user_name'] = user_name
-        login_user(User(session['user_name']))
+        login_user(User(session.get('user_name')))
         return redirect('chatrooms')
     return render_template('login.html')
 
