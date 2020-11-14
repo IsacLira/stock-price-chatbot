@@ -19,7 +19,11 @@
     <div>&nbsp</div>
     <form action="" method="POST" id='form_message'>
       <input type="text" size="56" class="message" placeholder="Type a message"/>
-      <input type="submit"/>
+      <input type="submit" value="Send"/>
+    </form>
+
+    <form action="{{url_for('main.logout')}}" method="POST" >
+      <input class="btn btn-primary" type="submit" value="Exit">
     </form>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -52,7 +56,7 @@
 
       setInterval(function(){
         socket.emit('read messages')
-        }, 500);
+        }, 200);
 
       socket.on( 'response event', function( msg ) {
         if( typeof msg.content !== 'undefined' ) {
