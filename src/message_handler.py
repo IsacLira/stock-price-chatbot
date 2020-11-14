@@ -1,6 +1,6 @@
 import re
 import time
-
+import json
 from src.db.database import RedisDB
 from src.message_broker.rabbitmq_publisher import RabbitMQPublisher
 
@@ -23,6 +23,10 @@ class MessageHandler:
         html_content = ''
         messages = db.lrange('chat', -self.max_msg, -1)
         all_messages = messages + self.stock_commands
+
+        if len(all_messages) == 0:
+            return {'content': html_content}
+
         sorted_messages = self.sort_messages(all_messages)
         for message in sorted_messages:
             if 'user_name' in message.keys():
@@ -34,14 +38,13 @@ class MessageHandler:
 
     def process_payload(self, payload=None):
         current_time = time.strftime("%H:%M:%S", time.localtime())
-        payload.update({'time': current_time})
         if payload is not None:
-            msg = payload['message']
-            if re.search(r"/stock=", msg):
+            payload.update({'time': current_time})
+            if re.search(r"/stock=", payload['message']):
                 self.publisher.run()
-                self.publisher.send(msg)
+                self.publisher.send(json.dumps(payload))
 
                 # The stock commands won't be saved into db
                 self.stock_commands.append(payload)
-            elif msg != '':
+            elif payload['message'] != '':
                 db.rpush('chat', payload)
