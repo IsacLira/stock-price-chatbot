@@ -15,8 +15,9 @@ def read_messages(methods=['GET', 'POST']):
 @socketio.on('user connection')
 def user_connected(json, methods=['GET', 'POST']):
     join_room('chat')
+    # Avoid replacing the last user info by the current one.
     try:
-        session[json['id']]
+        current_user = session[json['id']]
     except:
         session[json['id']] = json['user']
 
