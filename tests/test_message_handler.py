@@ -2,18 +2,18 @@ from unittest import TestCase
 from src.message_handler import MessageHandler
 
 MESSAGES = [{'message': 'Hey, how are you doing?',
-            'id': 'bbcd9',
-            'user_name': 'John',
-            'time': '22:20:11'},
+             'id': 'bbcd9',
+             'user_name': 'John',
+             'time': '22:20:11'},
             {'message': 'Hi',
-                    'id': 'bbcd9',
-                    'user_name': 'David',
-                    'time': '22:18:11'},
+             'id': 'bbcd9',
+             'user_name': 'David',
+             'time': '22:18:11'},
             {'message': "Good, and you?",
-                    'id': 'bbcd9',
-                    'user_name': 'David',
-                    'time': '22:22:11'},
-                    ]
+             'id': 'bbcd9',
+             'user_name': 'David',
+             'time': '22:22:11'},
+            ]
 
 
 class TestMessageHandler(TestCase):
@@ -36,4 +36,3 @@ class TestMessageHandler(TestCase):
 
         # Assert the number of filtered messages
         self.assertEqual(len(messages), self.message_handler.max_msg)
-

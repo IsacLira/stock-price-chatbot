@@ -11,13 +11,12 @@ class TestUserRepo(TestCase):
         cls.user_sign = UserSignUp()
 
     def test_valid_user(self):
-        user, password ='test_user', '12345'
+        user, password = 'test_user', '12345'
         self.user_sign.signup(user, password)
         user_status = self.user_repo.validate_user(user, password)
         self.assertTrue(user_status)
 
     def test_invalid_user(self):
-        user, password ='invalid', '12345'
+        user, password = 'invalid', '12345'
         user_status = self.user_repo.validate_user(user, password)
         self.assertFalse(user_status)
-

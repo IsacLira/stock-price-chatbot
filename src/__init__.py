@@ -6,6 +6,7 @@ from src.repository.user_repository import UserRepo, User
 socketio = SocketIO()
 login_manager = LoginManager()
 
+
 def create_app(debug=False):
     app = Flask(__name__)
 
