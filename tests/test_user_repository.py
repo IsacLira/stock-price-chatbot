@@ -36,3 +36,7 @@ class TestUserRepo(TestCase):
             user_info = [u for u in all_users if u['user_name'] == user][0]
             self.assertTrue(check_password_hash(
                 user_info['password'], password))
+
+        with self.subTest('Assert user on db'):
+            self.assertFalse(self.user_repo.set_user(user, password))
+
