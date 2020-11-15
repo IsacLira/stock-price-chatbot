@@ -27,6 +27,7 @@ pip install -r requirements.txt
 ```
 * Set the following config variables in a `.env` file at the root folder of the project.
 ```
+# Rabbit MQ secrets
 RABBIT_MQ_USER='guest'
 RABBIT_MQ_PASSWORD='guest'
 RABBIT_MQ_HOST='localhost'
@@ -35,6 +36,8 @@ RABBITMQ_QUEUE='chat_queue2'
 
 REDIS_HOST='localhost'
 REDIS_PORT=6379
+
+SECRET_KEY = 'gjr39dkjn344_!67#'
 ```
 
 ## Running the app
