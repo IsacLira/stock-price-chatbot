@@ -41,7 +41,7 @@ REDIS_PORT=6379
 
 # Flask secrets
 SECRET_KEY = 'gjr39dkjn344_!67#'
-FLASK_PORT= 5005
+FLASK_PORT= 5000
 ```
 
 ## Running the app
