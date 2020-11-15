@@ -32,12 +32,16 @@ RABBIT_MQ_USER='guest'
 RABBIT_MQ_PASSWORD='guest'
 RABBIT_MQ_HOST='localhost'
 RABBIT_MQ_PORT=5672
-RABBITMQ_QUEUE='chat_queue2'
+RABBITMQ_QUEUE='chat_queue'
 
+
+# REDIS secrets
 REDIS_HOST='localhost'
 REDIS_PORT=6379
 
+# Flask secrets
 SECRET_KEY = 'gjr39dkjn344_!67#'
+FLASK_PORT= 5005
 ```
 
 ## Running the app
