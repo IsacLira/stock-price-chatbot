@@ -1,6 +1,6 @@
 from unittest import TestCase
 from src.repository.user_repository import UserRepo
-from src.repository.user_signup import UserSignUp
+from src.services.user_signup import UserSignUp
 from src.db.database import RedisDB
 from werkzeug.security import check_password_hash
 
