@@ -1,5 +1,5 @@
 from unittest import TestCase
-from src.message_handler import MessageHandler
+from src.services.message_handler import MessageHandler
 
 MESSAGES = [{'message': 'Hey, how are you doing?',
              'id': 'bbcd9',

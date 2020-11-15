@@ -1,5 +1,5 @@
 from unittest import TestCase
-from src.chatbot import ChatBot
+from src.services.chatbot import ChatBot
 
 
 class TestChatbot(TestCase):

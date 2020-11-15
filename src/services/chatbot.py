@@ -8,10 +8,9 @@ import requests
 
 from src.db.database import RedisDB
 from src.message_broker.rabbitmq_consumer import RabbitMQConsumer
-from src.message_handler import MessageHandler
+from src.services.message_handler import MessageHandler
 from src.utils.utils import get_current_time
 from src.utils.logger import logger
-
 
 
 class ChatBot:

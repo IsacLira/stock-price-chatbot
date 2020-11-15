@@ -1,11 +1,10 @@
 from . import main
 from flask_login import login_user, login_required, logout_user, current_user
 from flask import session, render_template, request, redirect, url_for
-from src.repository.user_repository import UserRepo, User
+from src.repository.user_repository import User
+from src.services.user_validation import validate_user
 from src.utils.logger import logger
 from .. import login_manager
-
-user_repo = UserRepo()
 
 
 @main.route('/chatrooms', methods=['GET', 'POST'])
@@ -25,7 +24,7 @@ def logout():
 def index():
     user_name = request.form.get('user')
     password = request.form.get('password')
-    if user_repo.validate_user(user_name, password):
+    if validate_user(user_name, password):
         session['user_name'] = user_name
         login_user(User(session.get('user_name')))
         logger.info('User logged in successfully.')

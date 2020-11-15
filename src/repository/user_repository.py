@@ -1,7 +1,7 @@
 import json
 from flask_login import UserMixin
 from src.db.database import RedisDB
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash
 from src.utils.logger import logger
 
 
@@ -35,16 +35,6 @@ class UserRepo(RedisDB):
     def get_users(self):
         self.user_lis = self.lrange('user', 0, -1)
         return self.user_lis
-
-    def validate_user(self, user, password):
-        user_lis = self.get_users()
-        user_info = [info for info in user_lis if (user == info['user_name'])]
-        if len(user_info) == 0:
-            logger.info(f'User {user} not found.')
-            return False
-        status = (user_info[0]['user_name'] == user) & \
-            check_password_hash(user_info[0]['password'], password)
-        return status
 
 
 class User(UserMixin):

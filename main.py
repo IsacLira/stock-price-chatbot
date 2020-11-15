@@ -1,7 +1,7 @@
+import threading
 from src import create_app, socketio
 from src.utils.config import load_config
-from src.chatbot import ChatBot
-import threading
+from src.services.chatbot import ChatBot
 
 def run_app():
     app = create_app(debug=False)
