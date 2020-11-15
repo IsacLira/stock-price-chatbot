@@ -17,6 +17,9 @@ def load_config(key):
         'redis': {
             'host': os.environ.get('REDIS_HOST'),
             'port': os.environ.get('REDIS_PORT'),
+        },
+        'flask': {
+            'key': os.environ.get('SECRET_KEY')
         }
     }
     return configs[key]

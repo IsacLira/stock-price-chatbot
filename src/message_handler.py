@@ -3,6 +3,7 @@ import time
 import json
 from src.db.database import RedisDB
 from src.message_broker.rabbitmq_publisher import RabbitMQPublisher
+from src.utils.utils import get_current_time
 
 db = RedisDB()
 
@@ -38,7 +39,7 @@ class MessageHandler:
         return {'content': html_content}
 
     def process_payload(self, payload=None):
-        current_time = time.strftime("%H:%M:%S", time.localtime())
+        current_time = get_current_time()
         if payload is not None:
             payload.update({'time': current_time})
             if re.search(r"/stock=", payload['message']):

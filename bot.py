@@ -9,6 +9,7 @@ import requests
 from src.db.database import RedisDB
 from src.message_broker.rabbitmq_consumer import RabbitMQConsumer
 from src.message_handler import MessageHandler
+from src.utils.utils import get_current_time
 
 
 class ChatBot:
@@ -43,7 +44,7 @@ class ChatBot:
         bot_response = self.process_message(response['message'])
         if bot_response:
             response.update(bot_response)
-            current_time = time.strftime("%H:%M:%S", time.localtime())
+            current_time = get_current_time()
             response.update({
                 'user_name': 'Bot',
                 'time': current_time,
