@@ -3,9 +3,9 @@
 
   
 
-This is chat application using Flask and SocketIO. The app's features include the common user communication and also provides a chatbot that allows users to request stock prices using the command `/stock=code`.
+This is a browser-based chat application using Flask and SocketIO. The app's features include the common user communication and it also provides a chatbot that allows users to request stock prices from `https://stooq.com/`  using the command `/stock=code`.
 
-  
+
 
 ## Requirements
 
@@ -17,7 +17,7 @@ This is chat application using Flask and SocketIO. The app's features include th
 
 * RabbitMQ
 
-  
+
 
 ## Installation
   
@@ -25,7 +25,7 @@ This is chat application using Flask and SocketIO. The app's features include th
 ```
 pip install -r requirements.txt 
 ```
-* Save the default env variables in a `.env` file at the project root.
+* Set the following config variables in a `.env` file at the root folder of the project.
 ```
 RABBIT_MQ_USER='guest'
 RABBIT_MQ_PASSWORD='guest'
@@ -36,19 +36,21 @@ RABBITMQ_QUEUE='chat_queue2'
 REDIS_HOST='localhost'
 REDIS_PORT=6379
 ```
+
 ## Running the app
-* Start the server by typping at the project root:
-```python
+* Start the server by typping the command:
+```
 PYTHONPATH=$PYTHONPATH:$PWD python server.py
 ```
-* Run the chatbot by typping the following command:
-```python
+
+* Run the chatbot by with the following command:
+```
 PYTHONPATH=$PYTHONPATH:$PWD python bot.py
 ```
 
-* To create users use the command:
+* And in order to create users use the command:
 ```
 PYTHONPATH=$PYTHONPATH:$PWD python src/repository/user_signup.py --user 'user' --password `password`
 ```
 
-Finally, you can access at the endpoint `127.0.0.1:5000`
+Finally, you can access the chat using the endpoint `127.0.0.1:5000`
