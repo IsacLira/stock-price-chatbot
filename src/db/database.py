@@ -29,12 +29,3 @@ class RedisDB:
         messages = self.conn.lrange(key, start, stop)
         messages = [json.loads(m) for m in messages]
         return messages
-
-    def get_keys(self, key):
-        return self.conn.keys(key)
-
-    def hget(self, key, field):
-        return self.conn.hget(key, field)
-
-    def hset(self, key, field, value):
-        self.conn.hset(key, field, value)

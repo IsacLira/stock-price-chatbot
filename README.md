@@ -1,7 +1,7 @@
 
 # stock-price-chatbot
 
-  
+
 
 This is a browser-based chat application using Flask and SocketIO. The app's features include the common user communication and it also provides a chatbot that allows users to request stock prices from `https://stooq.com/`  using the command `/stock=code`.
 
@@ -20,10 +20,10 @@ This is a browser-based chat application using Flask and SocketIO. The app's fea
 
 
 ## Installation
-  
+
 * Install the requirements typing the command :
 ```
-pip install -r requirements.txt 
+pip install -r requirements.txt
 ```
 * Set the following config variables in a `.env` file at the root folder of the project.
 ```
