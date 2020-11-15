@@ -1,5 +1,5 @@
 from .. import socketio
-from src.message_handler import MessageHandler
+from src.services.message_handler import MessageHandler
 from flask_socketio import join_room, leave_room
 from flask import session
 

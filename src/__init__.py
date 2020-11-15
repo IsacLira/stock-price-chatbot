@@ -3,6 +3,7 @@ from flask import Flask, Blueprint
 from flask_socketio import SocketIO
 from src.repository.user_repository import UserRepo, User
 from src.utils.config import load_config
+from flask_cors import CORS
 
 socketio = SocketIO()
 login_manager = LoginManager()
@@ -10,6 +11,8 @@ login_manager = LoginManager()
 
 def create_app(debug=False):
     app = Flask(__name__)
+    CORS(app)
+
     config = load_config('flask')
 
     app.debug = debug
