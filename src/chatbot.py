@@ -62,8 +62,3 @@ class ChatBot:
 
     def run(self):
         self.consumer.consume(self.callback)
-
-
-if __name__ == "__main__":
-    bot = ChatBot()
-    bot.run()
