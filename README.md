@@ -56,4 +56,9 @@ PYTHONPATH=$PYTHONPATH:$PWD python bot.py
 PYTHONPATH=$PYTHONPATH:$PWD python src/repository/user_signup.py --user 'user' --password `password`
 ```
 
+* The unit tests use the local Redis database and RabbitMQ. To run the tests just type
+```
+PYTHONPATH=$PYTHONPATH:$PWD pytest
+```
+
 Finally, you can access the chat using the endpoint `127.0.0.1:5000`
