@@ -4,6 +4,7 @@ from src.repository.user_signup import UserSignUp
 from src.db.database import RedisDB
 from werkzeug.security import check_password_hash
 
+
 class TestUserRepo(TestCase):
 
     @classmethod
@@ -26,14 +27,12 @@ class TestUserRepo(TestCase):
     def test_insert_user(self):
         user, password = 'user_test', '12345'
         self.user_repo.set_user(user, password)
-        all_users = self.db.lrange('user', 0,-1)
+        all_users = self.db.lrange('user', 0, -1)
         with self.subTest('Assert saved user'):
-            status_lis = [u['user_name'] == user  for u in all_users]
+            status_lis = [u['user_name'] == user for u in all_users]
             self.assertTrue(any(status_lis))
 
         with self.subTest('Assert user and password'):
             user_info = [u for u in all_users if u['user_name'] == user][0]
             self.assertTrue(check_password_hash(
                 user_info['password'], password))
-
-
