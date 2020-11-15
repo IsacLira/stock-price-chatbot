@@ -45,7 +45,13 @@ FLASK_PORT= 5000
 ```
 
 ## Running the app
+* At the docker folder, type the following command in the terminal:
+```
+docker-compose up
+```
+
 * Start the application by typping the command:
+
 ```
 PYTHONPATH=$PYTHONPATH:$PWD python main.py
 ```
