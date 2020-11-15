@@ -2,6 +2,7 @@ from . import main
 from flask_login import login_user, login_required, logout_user, current_user
 from flask import session, render_template, request, redirect, url_for
 from src.repository.user_repository import UserRepo, User
+from .. import login_manager
 
 user_repo = UserRepo()
 
@@ -28,4 +29,7 @@ def index():
         return redirect('chatrooms')
     return render_template('login.html')
 
+@login_manager.unauthorized_handler
+def unauthorized_callback():
+    return redirect('/')
 
