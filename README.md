@@ -45,14 +45,9 @@ FLASK_PORT= 5000
 ```
 
 ## Running the app
-* Start the server by typping the command:
+* Start the application by typping the command:
 ```
-PYTHONPATH=$PYTHONPATH:$PWD python server.py
-```
-
-* Run the chatbot with the following command:
-```
-PYTHONPATH=$PYTHONPATH:$PWD python bot.py
+PYTHONPATH=$PYTHONPATH:$PWD python main.py
 ```
 
 * And in order to create users use the command:
