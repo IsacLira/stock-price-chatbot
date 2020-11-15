@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 def load_config(key):
     configs = {
         'rabbitmq': {
@@ -12,12 +13,10 @@ def load_config(key):
             'host': os.environ.get('RABBIT_MQ_HOST'),
             'port': os.environ.get('RABBIT_MQ_PORT'),
             'queue': os.environ.get('RABBITMQ_QUEUE')
-         },
-         'redis':{
-             'host': os.environ.get('REDIS_HOST'),
-             'port': os.environ.get('REDIS_PORT'),
-         }
+        },
+        'redis': {
+            'host': os.environ.get('REDIS_HOST'),
+            'port': os.environ.get('REDIS_PORT'),
+        }
     }
     return configs[key]
-
-

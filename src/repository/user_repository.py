@@ -10,7 +10,7 @@ class UserRepo(RedisDB):
 
     def set_user(self, user, password):
         password = generate_password_hash(password, method='sha256')
-        user_info = {'user_name': user, 'password':password}
+        user_info = {'user_name': user, 'password': password}
         self.rpush('user', user_info)
 
     def instantiate_users(self):

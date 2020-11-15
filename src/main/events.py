@@ -4,7 +4,6 @@ from flask_socketio import join_room, leave_room
 from flask import session
 
 
-
 message_handler = MessageHandler()
 
 @socketio.on('read messages')

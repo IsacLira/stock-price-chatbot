@@ -4,6 +4,8 @@ from flask_socketio import SocketIO
 from src.repository.user_repository import UserRepo, User
 
 socketio = SocketIO()
+login_manager = LoginManager()
+
 
 def create_app(debug=False):
     app = Flask(__name__)
@@ -16,7 +18,6 @@ def create_app(debug=False):
 
     user_repo = UserRepo()
 
-    login_manager = LoginManager()
     login_manager.login_view = '/'
     login_manager.init_app(app)
 

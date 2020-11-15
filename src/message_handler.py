@@ -6,6 +6,7 @@ from src.message_broker.rabbitmq_publisher import RabbitMQPublisher
 
 db = RedisDB()
 
+
 class MessageHandler:
     def __init__(self):
         self.max_msg = 50
