@@ -1,6 +1,8 @@
 from src import create_app, socketio
+from src.utils.config import load_config
 
 app = create_app(debug=True)
 
 if __name__ == '__main__':
-    socketio.run(app, port=5002)
+    port = load_config('flask')['port']
+    socketio.run(app, port=port)

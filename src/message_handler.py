@@ -50,4 +50,5 @@ class MessageHandler:
                 # The stock commands won't be saved into db
                 self.stock_commands.append(payload)
             elif payload['message'] != '':
+                logger.info('Saving message into db.')
                 self.db.rpush('chat', payload)
