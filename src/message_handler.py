@@ -4,14 +4,14 @@ import json
 from src.db.database import RedisDB
 from src.message_broker.rabbitmq_publisher import RabbitMQPublisher
 from src.utils.utils import get_current_time
-
-db = RedisDB()
+from src.utils.logger import logger
 
 
 class MessageHandler:
     def __init__(self):
         self.max_msg = 50
         self.publisher = RabbitMQPublisher()
+        self.db = RedisDB()
         self.stock_commands = []
 
     def sort_messages(self, messages):
@@ -23,7 +23,8 @@ class MessageHandler:
 
     def build_messages(self):
         html_content = ''
-        messages = db.lrange('chat', -self.max_msg, -1)
+        logger.info('Getting messages from DB')
+        messages = self.db.lrange('chat', -self.max_msg, -1)
         all_messages = messages + self.stock_commands
 
         if len(all_messages) == 0:
@@ -49,4 +50,4 @@ class MessageHandler:
                 # The stock commands won't be saved into db
                 self.stock_commands.append(payload)
             elif payload['message'] != '':
-                db.rpush('chat', payload)
+                self.db.rpush('chat', payload)

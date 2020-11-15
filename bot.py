@@ -10,6 +10,8 @@ from src.db.database import RedisDB
 from src.message_broker.rabbitmq_consumer import RabbitMQConsumer
 from src.message_handler import MessageHandler
 from src.utils.utils import get_current_time
+from src.utils.logger import logger
+
 
 
 class ChatBot:
@@ -19,10 +21,15 @@ class ChatBot:
 
     def process_stock_code(self, stock_code):
         url = f'https://stooq.com/q/l/?s={stock_code}&f=sd2t2ohlcv&h&e=csv'
-        response = requests.get(url)
-        df_stock = pd.read_csv(BytesIO(response.content))
-
         invalid_message = {'message': f"Invalid code {stock_code.upper()}"}
+
+        try:
+            response = requests.get(url)
+            df_stock = pd.read_csv(BytesIO(response.content))
+        except:
+            logger.error('Unable to get stock info from api.')
+            return invalid_message
+
         if df_stock.empty:
             return invalid_message
 
@@ -35,6 +42,7 @@ class ChatBot:
     def process_message(self, msg):
         if re.search(r"/stock=", msg):
             code = msg.split('=')[1]
+            logger.info('Processing stock command.')
             response = self.process_stock_code(code)
             return response
         return False
