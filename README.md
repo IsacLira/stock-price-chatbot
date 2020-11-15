@@ -43,7 +43,7 @@ REDIS_PORT=6379
 PYTHONPATH=$PYTHONPATH:$PWD python server.py
 ```
 
-* Run the chatbot by with the following command:
+* Run the chatbot with the following command:
 ```
 PYTHONPATH=$PYTHONPATH:$PWD python bot.py
 ```
