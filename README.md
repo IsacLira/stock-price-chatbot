@@ -58,7 +58,7 @@ PYTHONPATH=$PYTHONPATH:$PWD python main.py
 
 * And in order to create users use the command:
 ```
-PYTHONPATH=$PYTHONPATH:$PWD python src/repository/user_signup.py --user 'user' --password `password`
+PYTHONPATH=$PYTHONPATH:$PWD python src/services/user_signup.py --user user --password password
 ```
 
 * The unit tests use the local Redis database and RabbitMQ. To run the tests just type
