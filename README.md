@@ -14,10 +14,9 @@ This is a browser-based chat application using Flask and SocketIO. The app's fea
 * Redis Database
 
 * Flask
-
+* SocketIO
 * RabbitMQ
 
-* Docker
 
 Install the requirements typing the command:
 ```
