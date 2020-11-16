@@ -19,7 +19,7 @@ This is a browser-based chat application using Flask and SocketIO. The app's fea
 
 * Docker
 
-* Install the requirements typing the command:
+Install the requirements typing the command:
 ```
 pip install -r requirements.txt
 ```
