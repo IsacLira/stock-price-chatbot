@@ -40,7 +40,7 @@ REDIS_HOST='localhost'
 REDIS_PORT=6379
 
 # Flask secrets
-SECRET_KEY = 'gjr39dkjn344_!67#'
+SECRET_KEY='gjr39dkjn344_!67#'
 FLASK_PORT= 5000
 ```
 
