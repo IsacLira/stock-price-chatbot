@@ -20,7 +20,7 @@ def load_config(key):
         },
         'flask': {
             'key': os.environ.get('SECRET_KEY'),
-            'port': os.environ.get('FLASK_PORT')
+            'port': int(os.environ.get('FLASK_PORT'))
         }
     }
     return configs[key]
