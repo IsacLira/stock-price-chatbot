@@ -17,15 +17,13 @@ This is a browser-based chat application using Flask and SocketIO. The app's fea
 
 * RabbitMQ
 
+* Docker
 
-
-## Installation
-
-* Install the requirements typing the command :
+* Install the requirements typing the command:
 ```
 pip install -r requirements.txt
 ```
-* Set the following config variables in a `.env` file at the root folder of the project.
+* Set the following config variables in a `.env` file at the root folder of the project or use the `.env.sample` as reference.
 ```
 # Rabbit MQ secrets
 RABBIT_MQ_USER='guest'
@@ -45,7 +43,7 @@ FLASK_PORT= 5000
 ```
 
 ## Running the app
-* Type the following command in the terminal:
+* Type the following docker command in the terminal:
 ```
 docker-compose -f docker/docker-compose.yml up -d rabbitmq redis
 ```
@@ -66,4 +64,4 @@ PYTHONPATH=$PYTHONPATH:$PWD python src/services/user_signup.py --user user --pas
 PYTHONPATH=$PYTHONPATH:$PWD pytest
 ```
 
-Finally, you can access the chat using the endpoint `127.0.0.1:5000`
+Finally, you can access the chat on `127.0.0.1:5000`
