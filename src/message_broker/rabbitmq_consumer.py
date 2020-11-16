@@ -15,5 +15,5 @@ class RabbitMQConsumer(BaseRabbitMQ):
 
     def consume(self, callback):
         self.run()
-        self.channel.basic_consume(self.queue_name, callback)
+        self.channel.basic_consume(callback, self.queue_name)
         self.channel.start_consuming()
