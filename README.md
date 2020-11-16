@@ -45,9 +45,9 @@ FLASK_PORT= 5000
 ```
 
 ## Running the app
-* At the docker folder, type the following command in the terminal:
+* Type the following command in the terminal:
 ```
-docker-compose up
+docker-compose -f docker/docker-compose.yml up -d rabbitmq redis
 ```
 
 * Start the application by typping the command:
